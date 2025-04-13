@@ -99,13 +99,22 @@
 
         function FeedbackItem({ name, comment, email, id }) {
 
+            function deleteFeedback(id) {
+                fetch('https://ftsdm53s1-2515-evaluation-default-rtdb.asia-southeast1.firebasedatabase.app/feedback/'+id+".json", {method: 'DELETE'})
+                    .then(response => alert("Deleted Feedback..."))
+                    .catch(error => {
+                        alert("Error While Deleting Feedback!")
+                        console.log(error);
+                    })
+                // console.log(id);
+            }
 
             return (
                 <div className="card">
                     <h3> {name} </h3>
                     <p> {comment} </p>
                     <p> {email} </p>
-                    <button>Delete</button>
+                    <button onClick={() => deleteFeedback(id)}>Delete</button>
                 </div>
             )
         }

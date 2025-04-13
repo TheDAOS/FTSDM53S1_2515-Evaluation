@@ -74,6 +74,7 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
 }
 
@@ -84,4 +85,11 @@ nav {
     align-items: center;
     flex-wrap: wrap;
     gap: 10px;
+}
+
+@media screen and (width <= 520px) {
+    header {
+        flex-direction: column;
+        justify-content: center;
+    }
 }
