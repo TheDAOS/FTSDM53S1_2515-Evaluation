@@ -11,23 +11,8 @@ body {
     color: black;
     padding: 10px;
     border-radius: 10px;
-    margin: 10px auto;
-    width: fit-content;
-}
-
-.Feedback-Form {
-    color: ghostwhite;
-    font-family: 'Courier New', Courier, monospace;
-    padding: 0;
-    margin: 0;
-}
-
-.card {
-    background-color: lightcoral;
-    color: black;
-    padding: 10px;
-    border-radius: 10px;
-    margin: 10px auto;
+    /* margin: 10px auto; */
+    min-width: 200px;
     width: fit-content;
 }
 
@@ -89,5 +74,14 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 10px;
+}
+
+#FeedbackList {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
 }

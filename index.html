@@ -20,6 +20,7 @@
     <script type="text/babel" data-type="module">
         const api = 'https://ftsdm53s1-2515-evaluation-default-rtdb.asia-southeast1.firebasedatabase.app/feedback' + '.json'
         const { useState } = React;
+        getFromFirebase();
 
         async function getFromFirebase() {
             try {
@@ -27,8 +28,9 @@
                 const data = await response.json();
 
                 let newData = Object.entries(data).map(([id, data]) => { return { id, ...data } });
-                console.log(newData)
+                // console.log(newData)
 
+                localStorage.setItem('feedback', JSON.stringify(newData));
                 return newData;
             } catch (error) {
                 console.log(error);
@@ -95,17 +97,28 @@
             )
         }
 
-        function FeedbackItem({ children }) {
+        function FeedbackItem({ name, comment, email, id }) {
+
+
             return (
                 <div className="card">
-                    {children}
+                    <h3> {name} </h3>
+                    <p> {comment} </p>
+                    <p> {email} </p>
+                    <button>Delete</button>
                 </div>
             )
         }
 
         function FeedbackList() {
+            getFromFirebase();
+            let list = JSON.parse(localStorage.getItem('feedback')) || [];
+            console.log(list[0]);
+
             return (
-                <FeedbackItem/>
+                <div id="FeedbackList">
+                    {list.map(data => <FeedbackItem name={data.name} comment={data.comment} email={data.email} id={data.id} />)}
+                </div>
             )
         }
 
