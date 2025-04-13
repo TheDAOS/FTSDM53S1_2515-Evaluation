@@ -8,11 +8,14 @@ body {
 
 .card {
     background-color: lightcoral;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
     color: black;
     padding: 10px;
     border-radius: 10px;
     /* margin: 10px auto; */
-    min-width: 200px;
+    min-width: 300px;
     width: fit-content;
 }
 
