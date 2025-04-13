@@ -16,6 +16,22 @@ body {
 }
 
 .Feedback-Form {
+    color: ghostwhite;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 0;
+    margin: 0;
+}
+
+.card {
+    background-color: lightcoral;
+    color: black;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px auto;
+    width: fit-content;
+}
+
+.Feedback-Form {
     background-color: lightcoral;
     color: black;
     padding: 10px;
@@ -41,6 +57,15 @@ button,
 input[type="submit"],
 input[type="reset"] {
     font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover {
+    background-color: transparent;
+    border: 2px solid ghostwhite;
+    padding: 8px;
 }
 
 header {

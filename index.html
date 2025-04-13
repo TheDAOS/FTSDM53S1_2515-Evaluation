@@ -21,6 +21,21 @@
         const api = 'https://ftsdm53s1-2515-evaluation-default-rtdb.asia-southeast1.firebasedatabase.app/feedback' + '.json'
         const { useState } = React;
 
+        async function getFromFirebase() {
+            try {
+                const response = await fetch(api);
+                const data = await response.json();
+
+                let newData = Object.entries(data).map(([id, data]) => { return { id, ...data } });
+                console.log(newData)
+
+                return newData;
+            } catch (error) {
+                console.log(error);
+                return [];
+            }
+        }
+
         function FeedbackForm() {
             async function postToFirebase(formData) {
 
@@ -90,7 +105,23 @@
 
         function FeedbackList() {
             return (
-                <h1>Hello</h1>
+                <FeedbackItem/>
+            )
+        }
+
+        function ThemeToggle() {
+            const [darkMode, setDarkMode] = useState(true)
+
+            function changeTheme() {
+                document.body.style.backgroundColor = darkMode ? "black" : "ghostwhite";
+                document.body.style.color = darkMode ? "ghostwhite" : "black";
+                // console.log(darkMode);
+            }
+
+            changeTheme()
+
+            return (
+                <button onClick={() => setDarkMode(!darkMode)}>Light Mode</button>
             )
         }
 
@@ -98,15 +129,6 @@
             const [nav, setNav] = useState(true);
 
             function Nav() {
-                const [darkMode, setDarkMode] = useState(true)
-
-                function changeTheme() {
-                    document.body.style.backgroundColor = darkMode ? "black" : "ghostwhite";
-                    document.body.style.color = darkMode ? "ghostwhite" : "black" ;
-                    // console.log(darkMode);
-                }
-
-                changeTheme()
 
                 return (
                     <header>
@@ -117,7 +139,7 @@
                             <button onClick={() => setNav(false)}>Add FeedBack</button>
                         </nav>
 
-                        <button onClick={() => setDarkMode(!darkMode)}>Light Mode</button>
+                        <ThemeToggle />
                     </header>
                 )
             }
