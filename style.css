@@ -55,6 +55,11 @@ header {
     flex-wrap: wrap;
 }
 
+header > span {
+    font-size: large;
+    font-weight: bolder;
+}
+
 nav {
     display: flex;
     justify-content: space-between;
