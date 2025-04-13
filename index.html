@@ -20,12 +20,46 @@
     <script type="text/babel" data-type="module">
 
         function FeedbackForm() {
-            function feedbackSubmission(event) {
-                event.preventDefault()
-                console.log(event.target[0].value);
-                console.log(event.target[1].value);
-                console.log(event.target[2].value);
-                alert('form Submitted');
+            async function postToFirebase(formData) {
+                const api = 'https://ftsdm53s1-2515-evaluation-default-rtdb.asia-southeast1.firebasedatabase.app/feedback' + '.json'
+
+                try {
+                    const response = await fetch(api, {
+                        method: 'POST',
+                        body: JSON.stringify(formData),
+                    })
+                    let data = await response.json()
+                    // console.log(data)
+                    return data
+                } catch (error) {
+                    console.log(error)
+                    return error
+                }
+            }
+
+            async function feedbackSubmission(event) {
+                try {
+                    event.preventDefault()
+                    // console.log(event);
+
+                    let name = event.target[0].value;
+                    let email = event.target[1].value;
+                    let comment = event.target[2].value;
+
+                    await postToFirebase({
+                        name,
+                        email,
+                        comment,
+                    })
+
+                    event.target[0].value = "";
+                    event.target[1].value = "";
+                    event.target[2].value = "";
+
+                    alert('Feedback Submitted');
+                } catch (error) {
+                    alert(error);
+                }
             }
 
             return (
@@ -40,13 +74,14 @@
                     <textarea name="Comment" id="comment" required></textarea>
 
                     <input type="submit" value="Submit Feedback" />
+                    <input type="reset" value="Clear" />
                 </form>
             )
         }
 
         function Card({ children }) {
             return (
-                <div class="card">
+                <div className="card">
                     {children}
                 </div>
             )
@@ -54,9 +89,8 @@
 
         function App() {
             return (
-                <Card>
-                    <FeedbackForm />
-                </Card>
+
+                <FeedbackForm />
             )
         }
 
