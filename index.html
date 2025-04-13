@@ -101,7 +101,10 @@
 
             function deleteFeedback(id) {
                 fetch('https://ftsdm53s1-2515-evaluation-default-rtdb.asia-southeast1.firebasedatabase.app/feedback/'+id+".json", {method: 'DELETE'})
-                    .then(response => alert("Deleted Feedback..."))
+                    .then(response => {
+                        alert("Deleted Feedback...")
+                        getFromFirebase();
+                    })
                     .catch(error => {
                         alert("Error While Deleting Feedback!")
                         console.log(error);
