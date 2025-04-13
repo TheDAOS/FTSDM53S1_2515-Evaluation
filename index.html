@@ -21,21 +21,6 @@
         const api = 'https://ftsdm53s1-2515-evaluation-default-rtdb.asia-southeast1.firebasedatabase.app/feedback' + '.json'
         const { useState } = React;
 
-        function Nav() {
-            return (
-                <header>
-                    <span>Feedback Board</span>
-
-                    <nav>
-                        <button>View FeedBack</button>
-                        <button>Add FeedBack</button>
-                    </nav>
-
-                    <button>Light Mode</button>
-                </header>
-            )
-        }
-
         function FeedbackForm() {
             async function postToFirebase(formData) {
 
@@ -103,12 +88,36 @@
             )
         }
 
+        function FeedbackList() {
+            return (
+                <h1>Hello</h1>
+            )
+        } 
 
         function App() {
+            const [nav, setNav] = useState(true);
+
+            function Nav() {
+
+                return (
+                    <header>
+                        <span>Feedback Board</span>
+
+                        <nav>
+                            <button onClick={() => setNav(true)}>View FeedBack</button>
+                            <button onClick={() => setNav(false)}>Add FeedBack</button>
+                        </nav>
+
+                        <button>Light Mode</button>
+                    </header>
+                )
+            }
+
             return (
                 <>
                     <Nav />
-                    <FeedbackForm />
+                    {nav && <FeedbackList />}
+                    {!nav && <FeedbackForm />}
                 </>
             )
         }
