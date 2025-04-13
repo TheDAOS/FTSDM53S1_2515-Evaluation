@@ -124,7 +124,12 @@
 
         function FeedbackList() {
             getFromFirebase();
-            let list = JSON.parse(localStorage.getItem('feedback')) || [];
+            let local = localStorage.getItem('feedback');
+            let list = [];
+
+            if (local) {
+                list = JSON.parse(local) || [];
+            }
             console.log(list[0]);
 
             return (
