@@ -68,7 +68,7 @@ header {
     flex-wrap: wrap;
 }
 
-header > span {
+header>span {
     font-size: large;
     font-weight: bolder;
 }
@@ -90,9 +90,13 @@ nav {
     gap: 10px;
 }
 
-@media screen and (width <= 520px) {
+@media screen and (width <=520px) {
     header {
         flex-direction: column;
         justify-content: center;
+    }
+
+    .card {
+        width: 100%;
     }
 }
