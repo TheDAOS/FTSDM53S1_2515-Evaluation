@@ -21,7 +21,7 @@ body {
     padding: 10px;
     border-radius: 10px;
     margin: 10px auto;
-    
+
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -29,9 +29,35 @@ body {
 }
 
 input,
-textarea {
+textarea,
+button {
     background-color: ghostwhite;
     border: none;
     padding: 10px;
     border-radius: 10px;
+}
+
+button,
+input[type="submit"],
+input[type="reset"] {
+    font-weight: bold;
+}
+
+header {
+    background-color: lightblue;
+    color: black;
+    padding: 10px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
 }

@@ -18,10 +18,26 @@
     <div id="root"></div>
 
     <script type="text/babel" data-type="module">
+        const api = 'https://ftsdm53s1-2515-evaluation-default-rtdb.asia-southeast1.firebasedatabase.app/feedback' + '.json'
+        const { useState } = React;
+
+        function Nav() {
+            return (
+                <header>
+                    <span>Feedback Board</span>
+
+                    <nav>
+                        <button>View FeedBack</button>
+                        <button>Add FeedBack</button>
+                    </nav>
+
+                    <button>Light Mode</button>
+                </header>
+            )
+        }
 
         function FeedbackForm() {
             async function postToFirebase(formData) {
-                const api = 'https://ftsdm53s1-2515-evaluation-default-rtdb.asia-southeast1.firebasedatabase.app/feedback' + '.json'
 
                 try {
                     const response = await fetch(api, {
@@ -87,10 +103,13 @@
             )
         }
 
+
         function App() {
             return (
-
-                <FeedbackForm />
+                <>
+                    <Nav />
+                    <FeedbackForm />
+                </>
             )
         }
 
