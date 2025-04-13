@@ -18,14 +18,50 @@
     <div id="root"></div>
 
     <script type="text/babel" data-type="module">
+
+        function FeedbackForm() {
+            function feedbackSubmission(event) {
+                event.preventDefault()
+                console.log(event.target[0].value);
+                console.log(event.target[1].value);
+                console.log(event.target[2].value);
+                alert('form Submitted');
+            }
+
+            return (
+                <form onSubmit={feedbackSubmission} class="Feedback-Form">
+                    <label for="name">Name: </label>
+                    <input type="text" name="Name" id="name" required />
+
+                    <label for="email">Email: </label>
+                    <input type="email" name="Email" id="email" required />
+
+                    <label for="comment">Comment: </label>
+                    <textarea name="Comment" id="comment" required></textarea>
+
+                    <input type="submit" value="Submit Feedback" />
+                </form>
+            )
+        }
+
+        function Card({ children }) {
+            return (
+                <div class="card">
+                    {children}
+                </div>
+            )
+        }
+
         function App() {
             return (
-                <h1>Hello</h1>
+                <Card>
+                    <FeedbackForm />
+                </Card>
             )
         }
 
         let root = ReactDOM.createRoot(document.getElementById('root'))
-        root.render(<App/>)
+        root.render(<App />)
     </script>
 </body>
 
